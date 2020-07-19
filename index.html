@@ -1,0 +1,349 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Pipelined XSLT</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				
+				<!-- START of Intro -->
+				<section>
+					
+					<!--  data-background="img/notre-dame.jpg" data-background-size="100%" -->
+					
+					<section>
+						
+						<h1 style="">Pipelined XSLT</h1>
+						
+						<h3 style="">Balisage 2020</h3>
+						<p style="font-size: smaller;">Ari Nordström | ari.nordstrom@gmail.com</p>
+						
+						<img src="img/poses.001.png" alt="Poses" height="50%"/>
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Basics</h3>
+						
+						<!--<img src="img/watch-your-head.png" alt="Watch your head sigh-seeing bus sign" style="width: 47%; height: auto"/>-->
+						
+						<ol>
+							<li>Step 1</li>
+							<li>Step 2</li>
+							<li>Step 3</li>
+						</ol>
+						
+						<aside class="notes">
+							<p>You need to change the order of the steps...</p>
+						</aside>
+					</section>
+					
+					<section>
+						<h3>Basics</h3>
+						
+						<ol>
+							<li>Step 1</li>
+							<li>Step 3</li>
+							<li class="fragment highlight-red">Step 4</li>
+							<li>Step 2</li>
+						</ol>
+						
+						<aside class="notes">
+							<p>And add to them</p>
+						</aside>
+					</section>
+					
+					<section>
+						<!-- Use cases -->
+						<!-- Lexis RTF to XML in batch -->
+						<!-- Karnov SFS convert, compare and merge -->
+						<!-- Excel to XML -->
+						<!-- In other words, complex conversions in batch -->
+					</section>
+					
+					<section>
+						<!-- Disclaimer and my background with pipelined XSLT -->
+					</section>
+					
+				</section>
+				
+				<!-- END of Intro -->
+				
+					
+				
+				<!-- START of Mechanics -->
+				
+				<section>
+					<section>
+						<h3>Mechanics</h3>
+						
+						<!-- Link to Nic's XProc Tools, explanation of when I first encountered them -->
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<!-- Manifest file -->
+					</section>
+					
+					<section>
+						<!-- Steps, focussing on one thing only -->
+					</section>
+					
+				</section>
+				
+				<!-- END of Mechanics -->
+				
+				
+				
+				<!-- START of Developing -->
+				
+				<section>
+					<section>
+						<h3>Developing</h3>
+						
+						<!-- Reneral about dev, way of thinking -->
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<!-- Step 1 -->
+					</section>
+					
+					<section>
+						<!-- Step 2 -->
+					</section>
+					
+					<section>
+						<!-- Debug -->
+					</section>
+					
+					<section>
+						<!-- Pipeline organisation and grouping -->
+					</section>
+					
+					<section>
+						<!-- Attr processing -->
+					</section>
+					
+					<section>
+						<!-- Breadcrumb attrs -->
+					</section>
+					
+				</section>
+				
+				<!-- END of Developing -->
+				
+				
+				
+				<!-- START of Testing -->
+				
+				<section>
+					<section>
+						<h3>Testing</h3>
+						
+						<!-- XSpec link -->
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<!-- XSpec manifest -->
+						<!-- Excellent for documentation, too! -->
+					</section>
+					
+					<section>
+						<!-- Multiple XSpecs per test, other tricks -->
+					</section>
+					
+				</section>
+				
+				<!-- END of Testing -->
+				
+				
+				
+				<!-- START of Documenting -->
+				
+				<section>
+					<section>
+						<h3>Documenting</h3>
+						
+						
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<!-- @description in manifest -->
+					</section>
+					
+					<section>
+						<!-- XSpecs -->
+					</section>
+					
+					<section>
+						<!-- Why not combine XSLT and XSpec manifests into a single manifest format? -->
+					</section>
+					
+				</section>
+				
+				<!-- END of Documenting -->
+				
+				
+				
+				<!-- START of Implementing -->
+				
+				<section>
+					<section>
+						<h3>Implementing</h3>
+						
+						<!-- XProc 1.0 implementation, Nic -->
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<!-- Nic's basic mechanism -->
+					</section>
+					
+					<section>
+						<!-- XQuery 3.1 variant -->
+						<!-- Still uses manifest as-is -->
+						<!-- Dev in XProc version since it's got most of the goods, XQ for deploy only -->
+						<!-- XSpec not supported yet -->
+					</section>
+					
+					<section>
+						<!-- XProc 3.0? -->
+						<!-- Convert manifest to XProc 3.0 pipeline directly? (Why it wasn't a good idea in 1.0.) -->
+						<!-- XProc 3.0 variant implementations? -->
+					</section>
+					
+				</section>
+				
+				<!-- END of Implementing -->
+				
+				
+				
+				<!-- START of End Notes -->
+				
+				<section>
+					<section data-background="img/after-fire.png" data-background-size="100%">
+						<h3>Conclusions</h3>
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					
+					<section>
+						
+						<img src="img/this-road.jpg" alt="Submerged road sign" style="width: 70%; height: auto">
+						
+						<!-- Other pipeline languages and my POV -->
+						<!-- XSLT 3.0 variant -->
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<!-- Why not? -->
+						
+						<!-- XProc 1.0 takes lots of resources -->
+						<!-- Debug can take a lot of space -->
+						<!-- Another framework you'll have to support (XProc in addition to XSLT, say) -->
+						<!-- Steps not independent from each other? Absolutely true, but they are not meant to be! -->
+						
+						<!-- Why? -->
+						<!-- Focus on one thing only -->
+						<!-- Easier to maintain -->
+						<!-- Safer -->
+						<!-- Fun -->
+					</section>
+					
+					<section>
+						<h3>Thank You!</h3>
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+				</section>
+				
+				<!-- END of End Notes -->
+				
+			</div>
+		</div>
+
+		<!--<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>-->
+		
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		
+	</body>
+</html>
