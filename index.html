@@ -27,18 +27,17 @@
 			<div class="slides">
 				
 				<!-- START of Intro -->
-				<section>
-					
-					<!--  data-background="img/notre-dame.jpg" data-background-size="100%" -->
+				<section data-background="img/Stacy_Kranitz-266353.1095664.png" data-background-size="110%">
 					
 					<section>
 						
 						<h1 style="">Pipelined XSLT</h1>
 						
 						<h3 style="">Balisage 2020</h3>
-						<p style="font-size: smaller;">Ari Nordström | ari.nordstrom@gmail.com</p>
 						
-						<img src="img/GG-Drainage-image-PVC-pipes-background.jpg" alt="Stacked pipes" width="500"/>
+						<!--<img src="img/GG-Drainage-image-PVC-pipes-background.jpg" alt="Stacked pipes" width="400"/>-->
+						
+						<p style="font-size: smaller;">Ari Nordström | ari.nordstrom@gmail.com</p>
 						
 						<aside class="notes">
 							
@@ -46,9 +45,6 @@
 					</section>
 					
 					<section>
-						<h3>Basics</h3>
-						
-						<!--<img src="img/watch-your-head.png" alt="Watch your head sigh-seeing bus sign" style="width: 47%; height: auto"/>-->
 						
 						<ol>
 							<li>Step 1</li>
@@ -62,12 +58,11 @@
 					</section>
 					
 					<section>
-						<h3>Basics</h3>
 						
 						<ol>
 							<li>Step 1</li>
 							<li>Step 3</li>
-							<li class="fragment highlight-red">Step 4</li>
+							<li>Step 4</li>
 							<li>Step 2</li>
 						</ol>
 						
@@ -116,11 +111,11 @@
 				
 				<!-- START of Mechanics -->
 				
-				<section>
+				<section data-background="img/canada-oil-refinery.png" data-background-size="100%">
 					<section>
 						<h3>Mechanics</h3>
 						
-						<img src="img/lost-places-2178884_1920.jpg" alt="lost places" height="400"/>
+						<!--<img src="img/lost-places-2178884_1920.jpg" alt="lost places" height="300"/>-->
 						
 						<!-- Link to Nic's XProc Tools, explanation of when I first encountered them -->
 						
@@ -130,11 +125,23 @@
 					</section>
 					
 					<section>
+						<p>Nic Gibson's XProc Tools</p>
+						<p><a href="https://github.com/Corbas/xproc-tools">https://github.com/Corbas/xproc-tools</a></p>
+						
+						<aside class="notes">
+							<p>Nic introduced XProc Tools at Lexis</p>
+							<p>I liked them, continued using them after Lexis</p>
+							<p>They list XSLT steps in a manifest</p>
+						</aside>
+						
+					</section>
+					
+					<section>
 						<!-- Manifest file -->
 						<p>Manifests</p>
 						
 						<pre class="stretch">
-                            <code class="xml" data-line-numbers="1-15|5,9-10" data-trim data-noescape>&lt;manifest xml:base=".">
+                            <code class="xml" data-line-numbers="1-16|5,9-10|13" data-trim data-noescape>&lt;manifest xml:base=".">
     
     &lt;group description="Just a demo" xml:base="../xslt/">
         &lt;item href="step1.xsl" description="To element one">
@@ -145,7 +152,8 @@
             &lt;meta name="param3A" value="value3A"/>
             &lt;meta name="param3B" value="value3B"/>
         &lt;/item>
-        &lt;item href="step4.xsl" description="To element four"/>
+        &lt;item href="step4.xsl" description="To element four"
+              enable="true"/>
     &lt;/group>
     
 &lt;/manifest></code>
@@ -169,11 +177,11 @@
 				<!-- START of Developing -->
 				
 				<section>
-					<section>
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
 						<h3>Developing</h3>
 						
 						<!-- General about dev, way of thinking -->
-						<img src="img/watch-your-step-1457443.jpg" alt="Watch your step" height="300"/>
+						<!--<img src="img/watch-your-step-1457443.jpg" alt="Watch your step" height="300"/>-->
 						
 						<aside class="notes">
 							<p><strong>Each step does one thing</strong></p>
@@ -181,7 +189,7 @@
 						</aside>
 					</section>
 					
-					<section>
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
 						<!-- Step 1 -->
 						<pre class="stretch">
                             <code class="xml" data-line-numbers="|10-15|17-22" data-trim data-noescape>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -216,7 +224,7 @@
 						</aside>
 					</section>
 					
-					<section>
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
 						<!-- Step 2 -->
 						<pre class="stretch">
                             <code class="xml" data-line-numbers="8-13" data-trim data-noescape>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -245,11 +253,11 @@
 						</aside>
 					</section>
 					
-					<section>
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
 						<!-- Debug -->
 						
 						<pre class="stretch">
-                            <code style="font-size: smaller;" class="text" data-line-numbers="|4|5-22|3|2" data-trim data-noescape>ari@toddao:~/poc/tmp/debug/Activate_Learning.xml$ ls -lh
+                            <code style="font-size: smaller;" class="text" data-line-numbers="1-22|4|5-22|3|2" data-trim data-noescape>ari@toddao:~/poc/tmp/debug/Activate_Learning.xml$ ls -lh
 total 106M
 -rw-r--r-- 1 ari ari 3,5M mar  5 16:16 0-Activate_Learning.xml
 -rw-r--r-- 1 ari ari 3,5M mar  5 16:16 1-XLSX-UTIL_remove-empty.xsl.xml
@@ -275,6 +283,8 @@ total 106M
 						
 						<aside class="notes">
 							<ul>
+								<li>This is debug output from a project I did</li>
+								<li>Folder named after source file</li>
 								<li>Output from each step saved</li>
 								<li>Output named after step</li>
 								<li>Step 0 is a copy of the original</li>
@@ -283,10 +293,10 @@ total 106M
 						</aside>
 					</section>
 					
-					<section>
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
 						<!-- Pipeline organisation and grouping -->
 						
-						<p>Pipeline grouping</p>
+						<p style="text-align: left;">Pipeline grouping</p>
 						
 						<pre class="stretch">
                             <code class="xml" data-trim data-noescape>
@@ -311,15 +321,79 @@ total 106M
 	
 &lt;/manifest></code>
 						</pre>
+						
+						<aside class="notes">
+							<p>The manifest can be grouped, which is really useful when you have 70 steps</p>
+						</aside>
 					</section>
 					
-					<section>
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
 						<!-- Attr processing -->
+						<p style="text-align: left;">Copy everything you're not explicitly processing</p>
+						
+						<pre>
+                            <code class="xml" data-trim data-noescape>&lt;xsl:copy-of select="@* except @style"/>
+&lt;xsl:attribute name="formatting" select="@style"/></code>
+						</pre>
 					</section>
 					
-					<section>
-						<!-- Breadcrumb attrs -->
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
+						<!-- Breadcrumbs -->
+						<p style="text-align: left;">Breadcrumbs</p>
+						<pre>
+                            <code class="xml" data-line-numbers="1-5|2" data-trim data-noescape>&lt;xsl:template match="para" mode="STEP-2">
+    &lt;p role="{name(.)}">
+        ...
+    &lt;/p>
+&lt;/xsl:template></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>Leave source element names behind</p>
+							<p>Useful in complex up-conversions</p>
+						</aside>
 					</section>
+					
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
+						<!-- Breadcrumb attrs -->
+						<p style="text-align: left;">Breadcrumb attributes</p>
+						<pre>
+                            <code class="xml" data-trim data-noescape>&lt;xsl:attribute name="src-styling">
+  &lt;xsl:for-each select="(@style,@frame)">
+    &lt;xsl:value-of select="concat('@',name(.),'=',.)"/>
+    &lt;xsl:value-of select="if (position()!=last()) 
+                          then (' ')
+                          else ()"/>
+  &lt;/xsl:for-each>
+&lt;/xsl:attribute></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>Copy attributes in sources</p>
+							<p>Extremely useful when debugging large conversions</p>
+						</aside>
+					</section>
+					
+					<section data-background="img/oil-r.jpg" data-background-size="100%">
+						<!-- Breadcrumb attrs -->
+						<p style="text-align: left;">For this...</p>
+						<pre>
+                            <code class="xml" data-trim data-noescape>&lt;para style="1" frame="dash">Test&lt;/para></code>
+						</pre>
+						
+						<p style="text-align: left;">...we'd get</p>
+						<pre>
+                            <code class="xml" data-trim data-noescape>&lt;p src-styling="@style=1 @frame=dash">...&lt;/p></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>Breadcrumb attrs with pseudo attrs from sources</p>
+							<p>I've kept these in thousands of docs the first few months</p>
+							<p>Useful when understanding where osmething came from</p>
+						</aside>
+					</section>
+					
+					<!-- Add more on dev -->
 					
 				</section>
 				
@@ -329,27 +403,222 @@ total 106M
 				
 				<!-- START of Testing -->
 				
-				<section>
+				<section data-background="img/plant-industry-night-lights-refining.png" data-background-size="100%">
 					<section>
 						<h3>Testing</h3>
 						
 						<!--<img src="img/heating-463904_1920.jpg" alt="Gauges" height="350"/>-->
-						<img src="img/pipes-5146458_1920.jpg" alt="Pipes by a window" height="400"/>
+						<!--<img src="img/pipes-5146458_1920.jpg" alt="Pipes by a window" height="300"/>-->
 						
 						<!-- XSpec link -->
 						
 						<aside class="notes">
-							
+							<p>I much prefer XSpec when developing XSLT</p>
 						</aside>
 					</section>
+					
+					<!-- Add a simple XSpec scenario here -->
+					<section>
+						<pre>
+							<code class="xml" data-trim data-noescape>&lt;x:scenario
+    label="When converting a date in ECMA-376 format">
+    &lt;x:call
+        function="sg:todate">
+        &lt;x:param select="43836"/>
+    &lt;/x:call>
+    
+    &lt;x:expect
+        label="a readable dateTime value should result"
+        select="xs:dateTime('2020-01-08T00:00:00')"/>
+&lt;/x:scenario></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>Keeps me sane</p>
+							<p>XSpec is for a single XSLT, though, not for a pipeline of them</p>
+						</aside>
+					</section>
+					
+					<!-- Conversion to instance XSpecs, requires debug -->
 					
 					<section>
 						<!-- XSpec manifest -->
 						<!-- Excellent for documentation, too! -->
+						<p>XSpec manifest</p>
+						
+						<pre style="font-size: 0.5em" class="stretch">
+                            <code class="xml" data-trim data-noescape>&lt;tests
+    manifest="../../pipelines/poc/poc-xlsx2xml-manifest.xml"
+    xml:base="/home/ari/Documents/repos/xlsx2xml/">
+    
+  &lt;group description="XLSX normalisation steps">
+    &lt;test xslt="xslt/common/XLSX-UTIL_normalisation.xsl" 
+          xspec="xspec/common/XLSX-UTIL_normalisation.xspec"
+          description="Normalise shared strings."/>
+    &lt;test xslt="xslt/common/XLSX-UTIL_hyperlinks.xsl" 
+          xspec="xspec/common/XLSX-UTIL_hyperlinks.xspec" 
+          description="Normalise referenced hyperlinks."/>
+  &lt;/group>
+    
+  &lt;group description="Conversion steps">
+    &lt;test xslt="xslt/common/XLSX2XML_structure.xsl"
+          xspec="xspec/common/XLSX2XML_structure.xspec"
+          description="Convert main structures."/>
+    &lt;test xslt="xslt/common/XLSX2XML_dates.xsl"
+          xspec="xspec/common/XLSX2XML_dates.xspec"
+          description="Convert ECMA 376 dates to xs:dateTime."/>
+    &lt;test xslt="xslt/common/XLSX2XML_locations.xsl"
+          xspec="xspec/common/XLSX2XML_locations.xspec"
+          description="Convert location info to exc, 
+                       group it in locations wrapper."/>
+  &lt;/group>
+    
+&lt;/tests></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>XSpecs on source docs need to be converted using actual input/output</p>
+							<p>XSLT pipeline debug MUST be used</p>
+							<p>XSpec tests, one or more per each pipeline XSLT step</p>
+						</aside>
+						
+					</section>
+					
+					<!-- XProc step to do this -->
+					<section>
+						<pre>
+							<code class="xml" data-trim data-noescape>&lt;sg:run-xspecs
+    name="run-xspecs"
+    cx:depends-on="batch">
+    &lt;p:with-option
+        name="tmp-folder-uri"
+        select="$tmp-dir"/>
+    &lt;p:with-option
+        name="xspec-manifest-uri"
+        select="$xspec-manifest-uri"/>
+    &lt;p:with-option
+        name="run-xspecs"
+        select="$run-xspecs"/>
+&lt;/sg:run-xspecs></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>XSpec step written in XProc</p>
+							<p>Runs XSpec manifest</p>
+							<p>Converts XSpec tests written for a single step to XSpecs for debug instances</p>
+						</aside>
 					</section>
 					
 					<section>
-						<!-- Multiple XSpecs per test, other tricks -->
+						<pre style="font-size: 0.45em;">
+							<code class="xml" data-trim data-noescape>&lt;p:choose name="run">
+    &lt;p:when test="$run-xspecs='true'">
+        
+        &lt;!-- Generate instance XSpecs -->
+        &lt;p:xslt name="generate-xspec-instances">
+            &lt;p:input port="source">
+                &lt;p:inline>
+                    &lt;empty/>
+                &lt;/p:inline>
+            &lt;/p:input>
+            &lt;p:input port="stylesheet">
+                &lt;p:pipe port="xspec2instance" step="run-xspecs"/>
+            &lt;/p:input>
+            &lt;p:with-param name="tmp-folder" select="$tmp-folder-uri"/>
+            &lt;p:with-param name="xspec-manifest-uri" select="$xspec-manifest-uri"/>
+        &lt;/p:xslt>
+        
+        &lt;!-- Nothing interesting on the primary port so throw it away -->
+        &lt;p:sink/>
+        
+        &lt;!-- Generate XSLTs from the instance XSpecs available on the secondary port -->
+        &lt;p:for-each name="generate-xslt-tests">
+            
+            &lt;p:iteration-source>
+                &lt;p:pipe port="secondary" step="generate-xspec-instances"/>
+            &lt;/p:iteration-source>
+            
+            &lt;p:output port="result" sequence="true">
+                &lt;p:empty/>
+            &lt;/p:output>
+            
+            &lt;!-- The current instance XSpec's URI from the XSLT secondary (result-document) port -->
+            &lt;p:variable name="current-path" select="p:base-uri()"/>
+            
+            &lt;p:identity name="iteration-source"/>
+            
+            &lt;cx:message>
+                &lt;p:with-option
+                    name="message"
+                    select="if ($run-xspecs='true')
+                    then (concat('Running XSpec tests in ',$current-path))
+                    else ()"/>
+            &lt;/cx:message>
+            
+            &lt;!-- Save the instance XSpecs for debug purposes -->
+            &lt;p:store method="xml">
+                &lt;p:with-option name="href" select="$current-path"/>
+            &lt;/p:store>
+            
+            &lt;!-- Convert the current instance XSpec to XSLT -->
+            &lt;p:xslt name="xspec2xsl">
+                &lt;p:input port="source">
+                    &lt;p:pipe port="result" step="iteration-source"/>
+                &lt;/p:input>
+                &lt;p:input port="stylesheet">
+                    &lt;p:pipe port="xspec2xsl" step="run-xspecs"/>
+                &lt;/p:input>
+                &lt;p:input port="parameters">
+                    &lt;p:pipe port="params" step="run-xspecs"/>
+                &lt;/p:input>
+            &lt;/p:xslt>
+            
+            &lt;!-- Run the XSLT -->
+            &lt;p:xslt name="runxspec-xslt">
+                &lt;p:input port="source">
+                    &lt;p:empty/>
+                &lt;/p:input>
+                &lt;p:input port="stylesheet">
+                    &lt;p:pipe port="result" step="xspec2xsl"/>
+                &lt;/p:input>
+                &lt;p:with-option name="template-name" select="'x:main'"/>
+                &lt;p:input port="parameters">
+                    &lt;p:pipe port="params" step="run-xspecs"/>
+                &lt;/p:input>
+            &lt;/p:xslt>
+            
+            &lt;!-- Convert the XML reports to HTML -->
+            &lt;p:xslt name="xspec-xml2html">
+                &lt;p:input port="source"/>
+                &lt;p:input port="stylesheet">
+                    &lt;p:pipe port="xspec-report2html" step="run-xspecs"/>
+                &lt;/p:input>
+                &lt;p:input port="parameters">
+                    &lt;p:pipe port="params" step="run-xspecs"/>
+                &lt;/p:input>
+            &lt;/p:xslt>
+            
+            &lt;!-- Save the HTML -->
+            &lt;p:store 
+                method="xml">
+                &lt;p:with-option name="href" select="replace($current-path,'\.xspec','-report.xhtml')"/>
+            &lt;/p:store>
+            
+        &lt;/p:for-each>
+        
+        &lt;p:sink/>
+        
+    &lt;/p:when>
+    
+    &lt;p:otherwise>
+        &lt;p:sink>
+            &lt;p:input port="source">
+                &lt;p:empty/>
+            &lt;/p:input>
+        &lt;/p:sink>
+    &lt;/p:otherwise>
+&lt;/p:choose></code>
+						</pre>
 					</section>
 					
 				</section>
@@ -360,11 +629,11 @@ total 106M
 				
 				<!-- START of Documenting -->
 				
-				<section>
+				<section data-background="img/oil-refinery.jpg" data-background-size="110%">
 					<section>
 						<h3>Documenting</h3>
 						
-						<img src="img/picture-3492204_1920.jpg" alt="Picture tools" height="350"/>
+						<!--<img src="img/picture-3492204_1920.jpg" alt="Picture tools" height="300"/>-->
 						
 						<aside class="notes">
 							
@@ -373,14 +642,30 @@ total 106M
 					
 					<section>
 						<!-- @description in manifest -->
+						<pre>
+                            <code class="xml" data-trim data-noescape>&lt;item 
+  description="Adds equation PI placeholders"
+  href="eqn-pi.xsl"/></code>
+						</pre>
 					</section>
 					
 					<section>
 						<!-- XSpecs -->
+						<pre style="font-size: 0.54em;">
+                            <code class="xml" data-trim data-noescape>&lt;x:scenario label="When converting a date in ECMA-376 format">
+  &lt;x:call function="sg:todate">
+    &lt;x:param select="43836"/>
+  &lt;/x:call>
+        
+  &lt;x:expect label="a readable dateTime value should result" 
+    select="xs:dateTime('2020-01-08T00:00:00')"/>
+&lt;/x:scenario></code>
+						</pre>
 					</section>
 					
 					<section>
 						<!-- Why not combine XSLT and XSpec manifests into a single manifest format? -->
+						<p>Generate documentation from the manifest(s) and tests</p>
 					</section>
 					
 				</section>
@@ -391,21 +676,30 @@ total 106M
 				
 				<!-- START of Implementing -->
 				
-				<section>
+				<section data-background="img/LANDSCAPE_1280.png" data-background-size="100%">
 					<section>
 						<h3>Implementing</h3>
 						
-						<img src="img/lost-places-3683429_1920.jpg" alt="Lost pipes" height="400"/>
+						<!--<img src="img/lost-places-3683429_1920.jpg" alt="Lost pipes" height="300"/>-->
 						
 						<!-- XProc 1.0 implementation, Nic -->
 						
 						<aside class="notes">
-							
+							<p>My first organised dynamic pipelining tech, 5 years ago</p>
+							<p>Nic's XProc Tools - manifest</p>
 						</aside>
 					</section>
 					
 					<section>
 						<!-- Nic's basic mechanism -->
+						<h4>XProc 1.0 (Nic Gibson's XProc Tools)</h4>
+						<ol>
+							<li>Read XSLTs to sequence</li>
+							<li>Run 1st XSLT in sequence on input</li>
+							<li>Drop 1st XSLT</li>
+							<li>Feed output to next XSLT in sequence</li>
+							<li>Rinse &amp; repeat until no XSLTs left</li>
+						</ol>
 					</section>
 					
 					<section>
@@ -413,12 +707,52 @@ total 106M
 						<!-- Still uses manifest as-is -->
 						<!-- Dev in XProc version since it's got most of the goods, XQ for deploy only -->
 						<!-- XSpec not supported yet -->
+						<h4>XQuery</h4>
+						<ul>
+							<li>Needed pipelined XSLT in eXist-db</li>
+							<li>Same principle so interchangeable</li>
+							<li>All dev in XProc, eXist-db for production only</li>
+							<li>XSpec tests not supported in XQuery version</li>
+						</ul>
 					</section>
 					
 					<section>
 						<!-- XProc 3.0? -->
 						<!-- Convert manifest to XProc 3.0 pipeline directly? (Why it wasn't a good idea in 1.0.) -->
 						<!-- XProc 3.0 variant implementations? -->
+						<h4>XProc 3.0?</h4>
+						<ul>
+							<li>A lot of XProc Tools is now built-in</li>
+							<li>XProc 3.0 is vastly simpler to write</li>
+						</ul>
+						
+						<aside class="notes">
+							<p>Most of XProc Tools built in</p>
+							<p>Do we need a 3.0 version of XProc Tools at all?</p>
+						</aside>
+					</section>
+					
+					<section>
+						<h4>This looks a lot like a manifest:</h4>
+						
+						<pre>
+                            <code class="xml" data-trim data-noescape>&lt;p:xslt>
+   &lt;p:with-input port="stylesheet" href="..."/>
+&lt;/p:xslt>
+&lt;p:store use-when="$debug" href="..."/>
+
+&lt;p:xslt>
+   &lt;p:with-input port="stylesheet" href="..."/>
+&lt;/p:xslt>
+&lt;p:store use-when="$debug" href="..."/>
+
+...</code>
+						</pre>
+						
+						<aside class="notes">
+							<p>Convert manifest to XProc 3.0 step on the fly</p>
+							<p>Easy to add XSpec tests</p>
+						</aside>
 					</section>
 					
 				</section>
@@ -429,9 +763,12 @@ total 106M
 				
 				<!-- START of End Notes -->
 				
-				<section>
-					<section data-background="img/after-fire.png" data-background-size="100%">
-						<h3>Conclusions</h3>
+				<section data-background="img/refinery.png" data-background-size="100%">
+					<!-- data-background="img/after-fire.png" data-background-size="100%" -->
+					<section>
+						<h3>End Notes</h3>
+						
+						<!--<img src="img/Pipeline%20Construction%20Saferty%20Training%20(New)%20-%20Online.jpg" alt="Safety training" height="300"/>-->
 						
 						<aside class="notes">
 							
@@ -441,33 +778,70 @@ total 106M
 					
 					<section>
 						
-						<img src="img/this-road.jpg" alt="Submerged road sign" style="width: 70%; height: auto">
+						<h4>Orbeon XPL, XSLT 3.0 <code>transform()</code>, Ant, etc?</h4>
+						
+						<!--<img src="img/refining_750_300_c1.jpg" alt="Submerged road sign" style="width: 70%; height: auto">-->
 						
 						<!-- Other pipeline languages and my POV -->
 						<!-- XSLT 3.0 variant -->
 						
 						<aside class="notes">
-							
+							<p>I'm just a happy user</p>
+							<p>This represents ONE way to do it</p>
+							<p>The XProc approach is handy and suits my purposes</p>
 						</aside>
 					</section>
 					
 					<section>
-						<!-- Why not? -->
+						<h4>Why Not?</h4>
 						
-						<!-- XProc 1.0 takes lots of resources -->
-						<!-- Debug can take a lot of space -->
-						<!-- Another framework you'll have to support (XProc in addition to XSLT, say) -->
-						<!-- Steps not independent from each other? Absolutely true, but they are not meant to be! -->
+						<!--<img src="img/caution-2-1182756.jpg" alt="Caution" height="400"/>-->
 						
-						<!-- Why? -->
-						<!-- Focus on one thing only -->
-						<!-- Easier to maintain -->
-						<!-- Safer -->
-						<!-- Fun -->
+						<aside class="notes">
+							<ul>
+								<li>Resource-heavy (XProc 1.0)</li>
+								<li>Debug requires lots of space</li>
+								<li>Another framework to support</li>
+								<li>Steps depend on each other</li>
+							</ul>
+						</aside>
+						
 					</section>
 					
 					<section>
+						<h4>Why?</h4>
+						
+						<!--<img src="img/happy-pipe-smoking.jpg" alt="Happy pipe smoking" height="500"/>-->
+						
+						<aside class="notes">
+							<ul>
+								<li>Isolate concerns</li>
+								<li>Easier to maintain</li>
+								<li>Safer</li>
+								<li>Fun</li>
+							</ul>
+						</aside>
+						
+					</section>
+					
+					<section>
+						<p><a href="https://github.com/sgmlguru/xproc-batch">https://github.com/sgmlguru/xproc-batch</a><br/> (XProc Tools with wrappers and other utilities)</p>
+						<p><a href="https://github.com/sgmlguru/xslt-pipelines">https://github.com/sgmlguru/xslt-pipelines</a><br/> (example pipeline)</p>
+						
+						<aside class="notes">
+							<p>XProc batch: XProc Tools with wrappers and various utilities</p>
+							<p>XSLT Pipelines: demo pipeline</p>
+							<p>Both (hopefully) sufficiently documented</p>
+						</aside>
+					</section>
+					
+					<section data-background="img/stage-the-urgency-emergency.jpg" data-background-size="118%">
 						<h3>Thank You!</h3>
+						
+						<!--<img src="img/stage-the-urgency-emergency.jpg"/>-->
+						
+						<!--<img src="img/muppet-show-grumpies.jpg" alt="Muppet Show grumpies on balcony"/>-->
+						
 						<aside class="notes">
 							
 						</aside>

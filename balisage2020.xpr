@@ -6,6 +6,7 @@
     </meta>
     <projectTree name="balisage2020.xpr">
         <folder path="."/>
+        <folder path="../xproc-batch/"/>
         <folder path="../../../Dropbox/Balisage/2020/"/>
     </projectTree>
 </project>
