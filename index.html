@@ -145,7 +145,7 @@
 						<aside class="notes">
 							<p>Each item is a step</p>
 							<p>Steps in document order</p>
-							<p>Note the meta elements injecting parameters</p>
+							<p><strong>Note the meta elements injecting parameters</strong></p>
 							<p>Each step does one thing</p>
 						</aside>
 					</section>
@@ -208,7 +208,7 @@
 						</pre>
 						
 						<aside class="notes">
-							<p>Step 2 does one more thing</p>
+							<p>Step 2, one more thing</p>
 							<p>Note the dependence on step 1</p>
 							<p>And I've left out the ID transform</p>
 						</aside>
@@ -252,17 +252,18 @@ total 106M
 						</aside>
 					</section>
 					
-					<!-- Find step where things go wrong is easy -->
-					<!-- Fixing becomes easy -->
-					
 					<section>
-						<!-- Attr processing -->
+						<!-- Another basic principle-->
 						<p style="text-align: left;">Copy everything you're not explicitly processing</p>
 						
 						<pre>
                             <code class="xml" data-trim data-noescape>&lt;xsl:copy-of select="@* except @style"/>
 &lt;xsl:attribute name="formatting" select="@style"/></code>
 						</pre>
+						
+						<aside class="notes">
+							<p>Basic principle: copy anything you're not processing</p>
+						</aside>
 					</section>
 					
 					<section>
@@ -325,7 +326,6 @@ total 106M
 					
 					<section>
 						<!-- Pipeline organisation and grouping -->
-						
 						<p style="text-align: left;">Step grouping</p>
 						
 						<pre class="stretch">
@@ -355,20 +355,34 @@ total 106M
 						</aside>
 					</section>
 					
+					<section>
+						<p style="text-align: left;">"Sequential convenience"</p>
+						<ul>
+							<li>Temp markup and mockery</li>
+							<li>Temp lookups in step outputs</li>
+							<li>...</li>
+						</ul>
+						
+						<aside class="notes">
+							<p>You can do a lot of convenience-based transform...</p>
+							<p><strong>But I really want to stress *focus*</strong></p>
+						</aside>
+					</section>
+					
 					<!-- Each step does one thing -->
 					<section>
 						<img src="img/lens_1540441276.jpg" alt="Lens focussing on one thing" width="500"/>
 						
 						<aside class="notes">
 							<p>REMINDER</p>
-							<p>Steps should do one thing</p>
+							<p>Steps should do one (conceptual) thing</p>
 							<p>Or bad things happen</p>
 						</aside>
 					</section>
 					
 					<!-- If not, bad things happen (temptation to add to same step) -->
 					<section>
-						<p>Give in to the dark side</p>
+						<p>Don't give in to the dark side</p>
 						
 						<img src="img/bad-things.png" alt="2,700+ lines of XSLT" width="500"/>
 						
@@ -632,20 +646,23 @@ total 106M
 					<section>
 						<h3>Documenting</h3>
 						
-						<!--<img src="img/picture-3492204_1920.jpg" alt="Picture tools" height="300"/>-->
-						
 						<aside class="notes">
-							
+							<p>Documenting your pipeline is still important</p>
+							<p>No, not just comments in the stylesheets</p>
 						</aside>
 					</section>
 					
 					<section>
-						<!-- @description in manifest -->
 						<pre>
                             <code class="xml" data-trim data-noescape>&lt;item 
   description="Adds equation PI placeholders"
   href="eqn-pi.xsl"/></code>
 						</pre>
+						
+						<aside class="notes">
+							<p><strong>@description</strong> in manifest - IMPORTANT!</p>
+							<p>I tried to maintain Markdown documentation of manifests but they were constantly out of sync</p>
+						</aside>
 					</section>
 					
 					<section>
@@ -664,7 +681,7 @@ total 106M
 					
 					<section>
 						<!-- Why not combine XSLT and XSpec manifests into a single manifest format? -->
-						<p>Generate documentation from the manifest(s) and tests</p>
+						<p>Worth exploring: Generate documentation from the manifest(s) and tests</p>
 					</section>
 					
 				</section>
@@ -678,8 +695,6 @@ total 106M
 				<section data-background="img/LANDSCAPE_1280.png" data-background-size="100%">
 					<section>
 						<h3>Implementations</h3>
-						
-						<!-- XProc 1.0 implementation, Nic -->
 						
 						<aside class="notes">
 							<p>My first organised dynamic pipelining tech, 5 years ago</p>
@@ -722,10 +737,10 @@ total 106M
 						</ul>
 						
 						<aside class="notes">
-							<p>Started writing XProc 3.0 Tools</p>
-							<p>But much of XProc Tools built in</p>
+							<p>Started XProc 3.0 Tools but much was already built in</p>
 							<p>@use-when, syntactic sugar, shorter, XPath 3.1, etc</p>
 							<p>Do we need a 3.0 version of XProc Tools at all?</p>
+							<p>The XSpec library step would benefit from XProc 3</p>
 						</aside>
 					</section>
 					
@@ -748,7 +763,7 @@ total 106M
 						
 						<aside class="notes">
 							<p>Convert manifest to XProc 3.0 step on the fly</p>
-							<p>Easy to add XSpec tests</p>
+							<p>Add XSpec step, validation, etc</p>
 							<p>You could argue for an XSLT 3/transform() solution, too</p>
 						</aside>
 					</section>
