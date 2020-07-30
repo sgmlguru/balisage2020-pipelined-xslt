@@ -111,13 +111,77 @@
 				
 				<!-- START of Mechanics -->
 				
-				<section data-background="img/canada-oil-refinery.png" data-background-size="100%">
+				<!--<section data-background="img/canada-oil-refinery.png" data-background-size="100%">
 					<section>
 						<h3>Mechanics</h3>
 						
-						<!--<img src="img/lost-places-2178884_1920.jpg" alt="lost places" height="300"/>-->
+						<!-\-<img src="img/lost-places-2178884_1920.jpg" alt="lost places" height="300"/>-\->
 						
-						<!-- Link to Nic's XProc Tools, explanation of when I first encountered them -->
+						<!-\- Link to Nic's XProc Tools, explanation of when I first encountered them -\->
+						
+						<aside class="notes">
+							
+						</aside>
+					</section>
+					
+					<section>
+						<p>Nic Gibson's XProc Tools</p>
+						<p><a href="https://github.com/Corbas/xproc-tools">https://github.com/Corbas/xproc-tools</a></p>
+						
+						<aside class="notes">
+							<p>Nic introduced XProc Tools at Lexis</p>
+							<p>I liked them, continued using them after Lexis</p>
+							<p>They list XSLT steps in a manifest</p>
+						</aside>
+						
+					</section>
+					
+					<section>
+						<!-\- Manifest file -\->
+						<p>Manifests</p>
+						
+						<pre class="stretch">
+                            <code class="xml" data-line-numbers="1-16|5,9-10|13" data-trim data-noescape>&lt;manifest xml:base=".">
+    
+    &lt;group description="Just a demo" xml:base="../xslt/">
+        &lt;item href="step1.xsl" description="To element one">
+            &lt;meta name="param1" value="value1"/>
+        &lt;/item>
+        &lt;item href="step2.xsl" description="To element two"/>
+        &lt;item href="step3.xsl" description="To element three">
+            &lt;meta name="param3A" value="value3A"/>
+            &lt;meta name="param3B" value="value3B"/>
+        &lt;/item>
+        &lt;item href="step4.xsl" description="To element four"
+              enable="true"/>
+    &lt;/group>
+    
+&lt;/manifest></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>Each item is a step</p>
+							<p>Steps in document order</p>
+							<p>Note the meta elements injecting parameters</p>
+							<p>Which brings us to development</p>
+						</aside>
+						
+					</section>
+					
+				</section>-->
+				
+				<!-- END of Mechanics -->
+				
+				
+				
+				<!-- START of Developing -->
+				
+				<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
+						<h3>Developing</h3>
+						
+						<!-- General about dev, way of thinking -->
+						<!--<img src="img/watch-your-step-1457443.jpg" alt="Watch your step" height="300"/>-->
 						
 						<aside class="notes">
 							
@@ -163,33 +227,11 @@
 							<p>Each item is a step</p>
 							<p>Steps in document order</p>
 							<p>Note the meta elements injecting parameters</p>
-							<p>Which brings us to development</p>
-						</aside>
-						
-					</section>
-					
-				</section>
-				
-				<!-- END of Mechanics -->
-				
-				
-				
-				<!-- START of Developing -->
-				
-				<section>
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
-						<h3>Developing</h3>
-						
-						<!-- General about dev, way of thinking -->
-						<!--<img src="img/watch-your-step-1457443.jpg" alt="Watch your step" height="300"/>-->
-						
-						<aside class="notes">
-							<p><strong>Each step does one thing</strong></p>
-							<p>(so a lot of steps result)</p>
+							<p>Each step does one thing</p>
 						</aside>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
 						<!-- Step 1 -->
 						<pre class="stretch">
                             <code class="xml" data-line-numbers="|10-15|17-22" data-trim data-noescape>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -224,7 +266,7 @@
 						</aside>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
 						<!-- Step 2 -->
 						<pre class="stretch">
                             <code class="xml" data-line-numbers="8-13" data-trim data-noescape>&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -249,15 +291,27 @@
 						<aside class="notes">
 							<p>Step 2 does one more thing</p>
 							<p>Note the dependence on step 1</p>
-							<p>And I've left out the ID transfomr</p>
+							<p>And I've left out the ID transform</p>
 						</aside>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<!-- Each step does one thing -->
+					<!-- If not, bad things happen (temptation to add to same step) -->
+					<section>
+						<!--<p>Focus!</p>-->
+						<img src="img/lens_1540441276.jpg" alt="Lens focussing on one thing" width="500"/>
+						
+						<aside class="notes">
+							<p>Steps should do one thing</p>
+							<p>Or bad things happen</p>
+						</aside>
+					</section>
+					
+					<section>
 						<!-- Debug -->
 						
 						<pre class="stretch">
-                            <code style="font-size: smaller;" class="text" data-line-numbers="1-22|4|5-22|3|2" data-trim data-noescape>ari@toddao:~/poc/tmp/debug/Activate_Learning.xml$ ls -lh
+                            <code style="font-size: smaller;" class="text" data-line-numbers="1-22|4|2" data-trim data-noescape>ari@toddao:~/poc/tmp/debug/Activate_Learning.xml$ ls -lh
 total 106M
 -rw-r--r-- 1 ari ari 3,5M mar  5 16:16 0-Activate_Learning.xml
 -rw-r--r-- 1 ari ari 3,5M mar  5 16:16 1-XLSX-UTIL_remove-empty.xsl.xml
@@ -287,47 +341,15 @@ total 106M
 								<li>Folder named after source file</li>
 								<li>Output from each step saved</li>
 								<li>Output named after step</li>
-								<li>Step 0 is a copy of the original</li>
 								<li>Note the size of debug files</li>
 							</ul>
 						</aside>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
-						<!-- Pipeline organisation and grouping -->
-						
-						<p style="text-align: left;">Pipeline grouping</p>
-						
-						<pre class="stretch">
-                            <code class="xml" data-trim data-noescape>
-&lt;manifest xml:base=".">
-	
-  &lt;group xml:base="../xslt/common/">
-    &lt;item href="word-to-xhtml5-elements.xsl" description="Flat Word to XHTML conversion"/>
-    &lt;item href="add-eqn-pi.xsl" description="inserts a PI placeholder for equations"/>
-    ...
-  &lt;/group>
-
-  ...
-	
-  &lt;!-- Xref and cite processing -->
-  &lt;group xml:base="../xslt/stair-halsbury/">...&lt;/group>
-	
-  &lt;!-- Kepler cleanup -->
-  &lt;group xml:base="../xslt/stair-halsbury/">
-    &lt;item href="html2kepler_cleanup.xsl"/>
-    &lt;item href="html2kepler_namespacecleanup.xsl"/>
-  &lt;/group>
-	
-&lt;/manifest></code>
-						</pre>
-						
-						<aside class="notes">
-							<p>The manifest can be grouped, which is really useful when you have 70 steps</p>
-						</aside>
-					</section>
+					<!-- Find step where things go wrong is easy -->
+					<!-- Fixing becomes easy -->
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
 						<!-- Attr processing -->
 						<p style="text-align: left;">Copy everything you're not explicitly processing</p>
 						
@@ -337,11 +359,11 @@ total 106M
 						</pre>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
 						<!-- Breadcrumbs -->
 						<p style="text-align: left;">Breadcrumbs</p>
 						<pre>
-                            <code class="xml" data-line-numbers="1-5|2" data-trim data-noescape>&lt;xsl:template match="para" mode="STEP-2">
+                            <code class="xml" data-line-numbers="2" data-trim data-noescape>&lt;xsl:template match="para" mode="STEP-2">
     &lt;p role="{name(.)}">
         ...
     &lt;/p>
@@ -354,9 +376,9 @@ total 106M
 						</aside>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
 						<!-- Breadcrumb attrs -->
-						<p style="text-align: left;">Breadcrumb attributes</p>
+						<p style="text-align: left;">Breadcrumbs</p>
 						<pre>
                             <code class="xml" data-trim data-noescape>&lt;xsl:attribute name="src-styling">
   &lt;xsl:for-each select="(@style,@frame)">
@@ -374,7 +396,7 @@ total 106M
 						</aside>
 					</section>
 					
-					<section data-background="img/oil-r.jpg" data-background-size="100%">
+					<section>
 						<!-- Breadcrumb attrs -->
 						<p style="text-align: left;">For this...</p>
 						<pre>
@@ -390,6 +412,42 @@ total 106M
 							<p>Breadcrumb attrs with pseudo attrs from sources</p>
 							<p>I've kept these in thousands of docs the first few months</p>
 							<p>Useful when understanding where osmething came from</p>
+						</aside>
+					</section>
+					
+					<!-- Convenience discussion -->
+					
+					<section>
+						<!-- Pipeline organisation and grouping -->
+						
+						<p style="text-align: left;">Pipeline grouping</p>
+						
+						<pre class="stretch">
+                            <code class="xml" data-trim data-noescape>
+&lt;manifest xml:base=".">
+	
+  &lt;group xml:base="../xslt/common/">
+    &lt;item href="word-to-xhtml5-elements.xsl"/>
+    ...
+  &lt;/group>
+
+  ...
+	
+  &lt;!-- Xref and cite processing -->
+  &lt;group xml:base="../xslt/stair-halsbury/">...&lt;/group>
+	
+  &lt;!-- Kepler cleanup -->
+  &lt;group xml:base="../xslt/stair-halsbury/">
+    ...
+    &lt;item href="html2kepler_cleanup.xsl"/>
+  &lt;/group>
+	
+&lt;/manifest></code>
+						</pre>
+						
+						<aside class="notes">
+							<p>The manifest can be grouped - useful when you have 70 steps</p>
+							<p>xml:base allows you to organise XSLTs</p>
 						</aside>
 					</section>
 					
@@ -436,6 +494,7 @@ total 106M
 						<aside class="notes">
 							<p>Keeps me sane</p>
 							<p>XSpec is for a single XSLT, though, not for a pipeline of them</p>
+							<p>Can't do XSpec to test input of step 1 and output of step 70</p>
 						</aside>
 					</section>
 					
