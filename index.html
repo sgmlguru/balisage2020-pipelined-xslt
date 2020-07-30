@@ -522,12 +522,12 @@ total 106M
 					</section>
 					
 					<!-- Use? Maybe not. -->
-					<section>
+					<!--<section>
 						<pre style="font-size: 0.45em;">
 							<code class="xml" data-trim data-noescape>&lt;p:choose name="run">
     &lt;p:when test="$run-xspecs='true'">
         
-        &lt;!-- Generate instance XSpecs -->
+        &lt;!-\- Generate instance XSpecs -\->
         &lt;p:xslt name="generate-xspec-instances">
             &lt;p:input port="source">
                 &lt;p:inline>
@@ -541,10 +541,10 @@ total 106M
             &lt;p:with-param name="xspec-manifest-uri" select="$xspec-manifest-uri"/>
         &lt;/p:xslt>
         
-        &lt;!-- Nothing interesting on the primary port so throw it away -->
+        &lt;!-\- Nothing interesting on the primary port so throw it away -\->
         &lt;p:sink/>
         
-        &lt;!-- Generate XSLTs from the instance XSpecs available on the secondary port -->
+        &lt;!-\- Generate XSLTs from the instance XSpecs available on the secondary port -\->
         &lt;p:for-each name="generate-xslt-tests">
             
             &lt;p:iteration-source>
@@ -555,7 +555,7 @@ total 106M
                 &lt;p:empty/>
             &lt;/p:output>
             
-            &lt;!-- The current instance XSpec's URI from the XSLT secondary (result-document) port -->
+            &lt;!-\- The current instance XSpec's URI from the XSLT secondary (result-document) port -\->
             &lt;p:variable name="current-path" select="p:base-uri()"/>
             
             &lt;p:identity name="iteration-source"/>
@@ -568,12 +568,12 @@ total 106M
                     else ()"/>
             &lt;/cx:message>
             
-            &lt;!-- Save the instance XSpecs for debug purposes -->
+            &lt;!-\- Save the instance XSpecs for debug purposes -\->
             &lt;p:store method="xml">
                 &lt;p:with-option name="href" select="$current-path"/>
             &lt;/p:store>
             
-            &lt;!-- Convert the current instance XSpec to XSLT -->
+            &lt;!-\- Convert the current instance XSpec to XSLT -\->
             &lt;p:xslt name="xspec2xsl">
                 &lt;p:input port="source">
                     &lt;p:pipe port="result" step="iteration-source"/>
@@ -586,7 +586,7 @@ total 106M
                 &lt;/p:input>
             &lt;/p:xslt>
             
-            &lt;!-- Run the XSLT -->
+            &lt;!-\- Run the XSLT -\->
             &lt;p:xslt name="runxspec-xslt">
                 &lt;p:input port="source">
                     &lt;p:empty/>
@@ -600,7 +600,7 @@ total 106M
                 &lt;/p:input>
             &lt;/p:xslt>
             
-            &lt;!-- Convert the XML reports to HTML -->
+            &lt;!-\- Convert the XML reports to HTML -\->
             &lt;p:xslt name="xspec-xml2html">
                 &lt;p:input port="source"/>
                 &lt;p:input port="stylesheet">
@@ -611,7 +611,7 @@ total 106M
                 &lt;/p:input>
             &lt;/p:xslt>
             
-            &lt;!-- Save the HTML -->
+            &lt;!-\- Save the HTML -\->
             &lt;p:store 
                 method="xml">
                 &lt;p:with-option name="href" select="replace($current-path,'\.xspec','-report.xhtml')"/>
@@ -632,7 +632,7 @@ total 106M
     &lt;/p:otherwise>
 &lt;/p:choose></code>
 						</pre>
-					</section>
+					</section>-->
 					
 				</section>
 				
@@ -718,10 +718,11 @@ total 106M
 						<p  style="text-align: left;">XQuery 3.1</p>
 						<ul>
 							<li>Needed pipelined XSLT in eXist-db</li>
-							<li>Manifest, steps as-is in XProc and eXist</li>
-							<li>Same principle so interchangeable</li>
-							<li>All dev in XProc, eXist-db for production only</li>
-							<li>XSpec tests not supported in XQuery version</li>
+							<li>XQuery 3.1 module for pipelined XSLT</li>
+							<li>Manifest, steps the same in XProc and XQ</li>
+							<li>All dev in XProc</li>
+							<li>eXist-db for production only</li>
+							<!--<li>XSpec tests not supported in XQuery version</li>-->
 						</ul>
 					</section>
 					
