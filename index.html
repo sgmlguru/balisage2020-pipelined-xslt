@@ -53,7 +53,10 @@
 						</ol>
 						
 						<aside class="notes">
-							<p>You need to change the order of the steps...</p>
+							<p>Document conversion</p>
+							<p>XSLTs in sequence</p>
+							<p>My usual approach used to be hard-coded XProc</p>
+							<p>But what if you need to change the order or add to the pipeline?</p>
 						</aside>
 					</section>
 					
@@ -67,7 +70,7 @@
 						</ol>
 						
 						<aside class="notes">
-							<p>And add to them</p>
+							<p>Hard-coded XProcs quickly become problematic</p>
 						</aside>
 					</section>
 					
@@ -77,12 +80,9 @@
 						<span>
 							<img src="img/halsburys-laws-of-england.jpg" alt="Halsbury's Laws of England"/>
 						</span>
-						<!-- Use cases -->
-						<!-- Lexis RTF to XML in batch -->
-						<!-- Karnov SFS convert, compare and merge -->
-						<!-- Excel to XML -->
-						<!-- In other words, complex conversions in batch -->
+						
 						<aside class="notes">
+							<p>Hard-coded XProc</p>
 							<p>Lexis: RTF to XML (Nic Gibson and XProc Tools)</p>
 							<p>Karnov: SFS XML merge</p>
 							<p>On-demand Excel to online XML feed</p>
@@ -90,8 +90,8 @@
 						</aside>
 					</section>
 					
-					<section>
-						<!-- Disclaimer and my background with pipelined XSLT -->
+					<!--<section>
+						<!-\- Disclaimer and my background with pipelined XSLT -\->
 						<h3>Disclaimer</h3>
 						
 						<img src="img/submerged-pipeline-sign-1545047.jpg" alt="submerged pipeline" height="300"/>
@@ -101,76 +101,11 @@
 							<p>Previously, hard-coded XProc, etc</p>
 							
 						</aside>
-					</section>
+					</section>-->
 					
 				</section>
 				
 				<!-- END of Intro -->
-				
-					
-				
-				<!-- START of Mechanics -->
-				
-				<!--<section data-background="img/canada-oil-refinery.png" data-background-size="100%">
-					<section>
-						<h3>Mechanics</h3>
-						
-						<!-\-<img src="img/lost-places-2178884_1920.jpg" alt="lost places" height="300"/>-\->
-						
-						<!-\- Link to Nic's XProc Tools, explanation of when I first encountered them -\->
-						
-						<aside class="notes">
-							
-						</aside>
-					</section>
-					
-					<section>
-						<p>Nic Gibson's XProc Tools</p>
-						<p><a href="https://github.com/Corbas/xproc-tools">https://github.com/Corbas/xproc-tools</a></p>
-						
-						<aside class="notes">
-							<p>Nic introduced XProc Tools at Lexis</p>
-							<p>I liked them, continued using them after Lexis</p>
-							<p>They list XSLT steps in a manifest</p>
-						</aside>
-						
-					</section>
-					
-					<section>
-						<!-\- Manifest file -\->
-						<p>Manifests</p>
-						
-						<pre class="stretch">
-                            <code class="xml" data-line-numbers="1-16|5,9-10|13" data-trim data-noescape>&lt;manifest xml:base=".">
-    
-    &lt;group description="Just a demo" xml:base="../xslt/">
-        &lt;item href="step1.xsl" description="To element one">
-            &lt;meta name="param1" value="value1"/>
-        &lt;/item>
-        &lt;item href="step2.xsl" description="To element two"/>
-        &lt;item href="step3.xsl" description="To element three">
-            &lt;meta name="param3A" value="value3A"/>
-            &lt;meta name="param3B" value="value3B"/>
-        &lt;/item>
-        &lt;item href="step4.xsl" description="To element four"
-              enable="true"/>
-    &lt;/group>
-    
-&lt;/manifest></code>
-						</pre>
-						
-						<aside class="notes">
-							<p>Each item is a step</p>
-							<p>Steps in document order</p>
-							<p>Note the meta elements injecting parameters</p>
-							<p>Which brings us to development</p>
-						</aside>
-						
-					</section>
-					
-				</section>-->
-				
-				<!-- END of Mechanics -->
 				
 				
 				
@@ -180,11 +115,8 @@
 					<section>
 						<h3>Developing</h3>
 						
-						<!-- General about dev, way of thinking -->
-						<!--<img src="img/watch-your-step-1457443.jpg" alt="Watch your step" height="300"/>-->
-						
 						<aside class="notes">
-							
+							<p>Lexis was a turning point</p>
 						</aside>
 					</section>
 					
@@ -296,7 +228,6 @@
 					</section>
 					
 					<!-- Each step does one thing -->
-					<!-- If not, bad things happen (temptation to add to same step) -->
 					<section>
 						<!--<p>Focus!</p>-->
 						<img src="img/lens_1540441276.jpg" alt="Lens focussing on one thing" width="500"/>
@@ -307,11 +238,25 @@
 						</aside>
 					</section>
 					
+					<!-- If not, bad things happen (temptation to add to same step) -->
+					<section>
+						<p>Give in to the dark side</p>
+						
+						<img src="img/bad-things.png" alt="2,700+ lines of XSLT" width="500"/>
+						
+						<aside class="notes">
+							<p>"I can add my stuff here, it won't hurt anyone"</p>
+							<p>XSLTs grow uncontrollably</p>
+							<p>They become exactly what you wanted to avoid</p>
+							<p>You want them small so it's easy to follow what's happening and debug</p>
+						</aside>
+					</section>
+					
 					<section>
 						<!-- Debug -->
 						
 						<pre class="stretch">
-                            <code style="font-size: smaller;" class="text" data-line-numbers="1-22|4|2" data-trim data-noescape>ari@toddao:~/poc/tmp/debug/Activate_Learning.xml$ ls -lh
+                            <code style="font-size: smaller;" class="text" data-line-numbers="1-22|1|4|2" data-trim data-noescape>ari@toddao:~/poc/tmp/debug/Activate_Learning.xml$ ls -lh
 total 106M
 -rw-r--r-- 1 ari ari 3,5M mar  5 16:16 0-Activate_Learning.xml
 -rw-r--r-- 1 ari ari 3,5M mar  5 16:16 1-XLSX-UTIL_remove-empty.xsl.xml
@@ -337,8 +282,7 @@ total 106M
 						
 						<aside class="notes">
 							<ul>
-								<li>This is debug output from a project I did</li>
-								<li>Folder named after source file</li>
+								<li>Folder named after source filename</li>
 								<li>Output from each step saved</li>
 								<li>Output named after step</li>
 								<li>Note the size of debug files</li>
@@ -411,7 +355,7 @@ total 106M
 						<aside class="notes">
 							<p>Breadcrumb attrs with pseudo attrs from sources</p>
 							<p>I've kept these in thousands of docs the first few months</p>
-							<p>Useful when understanding where osmething came from</p>
+							<p>Useful when understanding where something came from</p>
 						</aside>
 					</section>
 					
@@ -420,27 +364,24 @@ total 106M
 					<section>
 						<!-- Pipeline organisation and grouping -->
 						
-						<p style="text-align: left;">Pipeline grouping</p>
+						<p style="text-align: left;">Step grouping</p>
 						
 						<pre class="stretch">
                             <code class="xml" data-trim data-noescape>
 &lt;manifest xml:base=".">
 	
-  &lt;group xml:base="../xslt/common/">
-    &lt;item href="word-to-xhtml5-elements.xsl"/>
-    ...
-  &lt;/group>
-
+  &lt;group xml:base="../xslt/html2xml/">...&lt;/group>
+  
   ...
+  
+  &lt;!-- CALS processing -->
+  &lt;group xml:base="../xslt/cals/">...&lt;/group>
 	
   &lt;!-- Xref and cite processing -->
-  &lt;group xml:base="../xslt/stair-halsbury/">...&lt;/group>
+  &lt;group xml:base="../xslt/refs/">...&lt;/group>
 	
-  &lt;!-- Kepler cleanup -->
-  &lt;group xml:base="../xslt/stair-halsbury/">
-    ...
-    &lt;item href="html2kepler_cleanup.xsl"/>
-  &lt;/group>
+  &lt;!-- Cleanup -->
+  &lt;group xml:base="../xslt/common/">...&lt;/group>
 	
 &lt;/manifest></code>
 						</pre>
@@ -452,6 +393,19 @@ total 106M
 					</section>
 					
 					<!-- Add more on dev -->
+					<section>
+						<p>Validation</p>
+						<ul>
+							<li>Schematron</li>
+							<li>DTDs (for now)</li>
+						</ul>
+						
+						<aside class="notes">
+							<p>Not along the way</p>
+							<p>After last step - valid when you've processed everything</p>
+							<p>Only DTD validation for now - haven't had the need for others</p>
+						</aside>
+					</section>
 					
 				</section>
 				
@@ -465,17 +419,14 @@ total 106M
 					<section>
 						<h3>Testing</h3>
 						
-						<!--<img src="img/heating-463904_1920.jpg" alt="Gauges" height="350"/>-->
-						<!--<img src="img/pipes-5146458_1920.jpg" alt="Pipes by a window" height="300"/>-->
-						
-						<!-- XSpec link -->
+						<!-- XSpec link? -->
 						
 						<aside class="notes">
 							<p>I much prefer XSpec when developing XSLT</p>
 						</aside>
 					</section>
 					
-					<!-- Add a simple XSpec scenario here -->
+					<!-- Simple XSpec scenario here -->
 					<section>
 						<pre>
 							<code class="xml" data-trim data-noescape>&lt;x:scenario
@@ -493,7 +444,7 @@ total 106M
 						
 						<aside class="notes">
 							<p>Keeps me sane</p>
-							<p>XSpec is for a single XSLT, though, not for a pipeline of them</p>
+							<p>XSpec is for a single XSLT, though, not for a pipeline</p>
 							<p>Can't do XSpec to test input of step 1 and output of step 70</p>
 						</aside>
 					</section>
@@ -538,7 +489,7 @@ total 106M
 						<aside class="notes">
 							<p>XSpecs on source docs need to be converted using actual input/output</p>
 							<p>XSLT pipeline debug MUST be used</p>
-							<p>XSpec tests, one or more per each pipeline XSLT step</p>
+							<p>XSpec tests, <strong>one or more</strong> per each pipeline XSLT step</p>
 						</aside>
 						
 					</section>
@@ -568,6 +519,7 @@ total 106M
 						</aside>
 					</section>
 					
+					<!-- Use? Maybe not. -->
 					<section>
 						<pre style="font-size: 0.45em;">
 							<code class="xml" data-trim data-noescape>&lt;p:choose name="run">
@@ -737,9 +689,7 @@ total 106M
 				
 				<section data-background="img/LANDSCAPE_1280.png" data-background-size="100%">
 					<section>
-						<h3>Implementing</h3>
-						
-						<!--<img src="img/lost-places-3683429_1920.jpg" alt="Lost pipes" height="300"/>-->
+						<h3>Implementations</h3>
 						
 						<!-- XProc 1.0 implementation, Nic -->
 						
@@ -751,7 +701,7 @@ total 106M
 					
 					<section>
 						<!-- Nic's basic mechanism -->
-						<h4>XProc 1.0 (Nic Gibson's XProc Tools)</h4>
+						<p style="text-align: left;">XProc 1.0 (Nic Gibson's XProc Tools)</p>
 						<ol>
 							<li>Read XSLTs to sequence</li>
 							<li>Run 1st XSLT in sequence on input</li>
@@ -762,13 +712,10 @@ total 106M
 					</section>
 					
 					<section>
-						<!-- XQuery 3.1 variant -->
-						<!-- Still uses manifest as-is -->
-						<!-- Dev in XProc version since it's got most of the goods, XQ for deploy only -->
-						<!-- XSpec not supported yet -->
-						<h4>XQuery</h4>
+						<p  style="text-align: left;">XQuery 3.1</p>
 						<ul>
 							<li>Needed pipelined XSLT in eXist-db</li>
+							<li>Manifest, steps as-is in XProc and eXist</li>
 							<li>Same principle so interchangeable</li>
 							<li>All dev in XProc, eXist-db for production only</li>
 							<li>XSpec tests not supported in XQuery version</li>
@@ -779,20 +726,23 @@ total 106M
 						<!-- XProc 3.0? -->
 						<!-- Convert manifest to XProc 3.0 pipeline directly? (Why it wasn't a good idea in 1.0.) -->
 						<!-- XProc 3.0 variant implementations? -->
-						<h4>XProc 3.0?</h4>
+						<p  style="text-align: left;">XProc 3.0?</p>
 						<ul>
 							<li>A lot of XProc Tools is now built-in</li>
 							<li>XProc 3.0 is vastly simpler to write</li>
+							<li>Convenience!</li>
 						</ul>
 						
 						<aside class="notes">
-							<p>Most of XProc Tools built in</p>
+							<p>Started writing XProc 3.0 Tools</p>
+							<p>But much of XProc Tools built in</p>
+							<p>@use-when, syntactic sugar, shorter, XPath 3.1, etc</p>
 							<p>Do we need a 3.0 version of XProc Tools at all?</p>
 						</aside>
 					</section>
 					
 					<section>
-						<h4>This looks a lot like a manifest:</h4>
+						<p  style="text-align: left;">This looks a lot like a manifest:</p>
 						
 						<pre>
                             <code class="xml" data-trim data-noescape>&lt;p:xslt>
@@ -811,6 +761,7 @@ total 106M
 						<aside class="notes">
 							<p>Convert manifest to XProc 3.0 step on the fly</p>
 							<p>Easy to add XSpec tests</p>
+							<p>You could argue for an XSLT 3/transform() solution, too</p>
 						</aside>
 					</section>
 					
@@ -823,23 +774,18 @@ total 106M
 				<!-- START of End Notes -->
 				
 				<section data-background="img/refinery.png" data-background-size="100%">
-					<!-- data-background="img/after-fire.png" data-background-size="100%" -->
 					<section>
 						<h3>End Notes</h3>
 						
-						<!--<img src="img/Pipeline%20Construction%20Saferty%20Training%20(New)%20-%20Online.jpg" alt="Safety training" height="300"/>-->
-						
 						<aside class="notes">
-							
+							<p>Far more to be said about pipelined XSLT</p>
 						</aside>
 					</section>
 					
 					
 					<section>
 						
-						<h4>Orbeon XPL, XSLT 3.0 <code>transform()</code>, Ant, etc?</h4>
-						
-						<!--<img src="img/refining_750_300_c1.jpg" alt="Submerged road sign" style="width: 70%; height: auto">-->
+						<p>Orbeon XPL, XSLT 3.0/XPath 3.1 <code>transform()</code>, Ant, etc?</p>
 						
 						<!-- Other pipeline languages and my POV -->
 						<!-- XSLT 3.0 variant -->
@@ -848,13 +794,13 @@ total 106M
 							<p>I'm just a happy user</p>
 							<p>This represents ONE way to do it</p>
 							<p>The XProc approach is handy and suits my purposes</p>
+							<p>Yes, there's now XSLT 3 and I really want use it more</p>
+							<p>Most of my clients are stuck in XSLT1/2</p>
 						</aside>
 					</section>
 					
 					<section>
-						<h4>Why Not?</h4>
-						
-						<!--<img src="img/caution-2-1182756.jpg" alt="Caution" height="400"/>-->
+						<p>Why not?</p>
 						
 						<aside class="notes">
 							<ul>
@@ -868,9 +814,7 @@ total 106M
 					</section>
 					
 					<section>
-						<h4>Why?</h4>
-						
-						<!--<img src="img/happy-pipe-smoking.jpg" alt="Happy pipe smoking" height="500"/>-->
+						<p>Why?</p>
 						
 						<aside class="notes">
 							<ul>
@@ -897,12 +841,8 @@ total 106M
 					<section data-background="img/stage-the-urgency-emergency.jpg" data-background-size="118%">
 						<h3>Thank You!</h3>
 						
-						<!--<img src="img/stage-the-urgency-emergency.jpg"/>-->
-						
-						<!--<img src="img/muppet-show-grumpies.jpg" alt="Muppet Show grumpies on balcony"/>-->
-						
 						<aside class="notes">
-							
+							<p>Questions?</p>
 						</aside>
 					</section>
 					
@@ -913,23 +853,6 @@ total 106M
 			</div>
 		</div>
 
-		<!--<script src="js/reveal.js"></script>
-
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				hash: true,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-		</script>-->
-		
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
