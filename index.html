@@ -43,6 +43,21 @@
 					</section>
 					
 					<section>
+						<p>Where I come from</p>
+						
+						<span>
+							<img src="img/xm-checkout.jpg" alt="Document management in XMetaL - checkout" width="400"/>
+						</span>
+						
+						<aside class="notes">
+							<p>Document management, publishing systems</p>
+							<p>Document conversions. Batch.</p>
+							<p>Monolithic XSLT, sometimes 2-3 in sequence</p>
+							<p>Hard-coded XProc, other scripts</p>
+						</aside>
+					</section>
+					
+					<section>
 						
 						<ol>
 							<li>Step 1</li>
@@ -51,9 +66,7 @@
 						</ol>
 						
 						<aside class="notes">
-							<p>Document conversion</p>
 							<p>XSLTs in sequence</p>
-							<p>My usual approach used to be hard-coded XProc</p>
 							<p>But what if you need to change the order or add to the pipeline?</p>
 						</aside>
 					</section>
@@ -73,14 +86,11 @@
 					</section>
 					
 					<section>
-						<p>Where I come from</p>
-						
 						<span>
 							<img src="img/halsburys-laws-of-england.jpg" alt="Halsbury's Laws of England printed books, and laptop"/>
 						</span>
 						
 						<aside class="notes">
-							<p>Hard-coded XProc</p>
 							<p>Lexis: RTF to XML (Nic Gibson and XProc Tools)</p>
 							<p>Karnov: SFS XML merge</p>
 							<p>On-demand Excel to online XML feed</p>
@@ -122,7 +132,7 @@
 						<p>Manifests</p>
 						
 						<pre class="stretch">
-                            <code class="xml" data-line-numbers="1-16|5,9-10|13" data-trim data-noescape>&lt;manifest xml:base=".">
+                            <code class="xml" data-line-numbers="1-16|7|5,9-10|1-16" data-trim data-noescape>&lt;manifest xml:base=".">
     
     &lt;group description="Just a demo" xml:base="../xslt/">
         &lt;item href="step1.xsl" description="To element one">
@@ -474,7 +484,7 @@ total 106M
 						<p>XSpec manifest</p>
 						
 						<pre style="font-size: 0.5em" class="stretch">
-                            <code class="xml" data-trim data-noescape>&lt;tests
+                            <code class="xml" data-trim data-noescape data-line-numbers="|6-8">&lt;tests
     manifest="../../pipelines/poc/poc-xlsx2xml-manifest.xml"
     xml:base="/home/ari/Documents/repos/xlsx2xml/">
     
