@@ -35,8 +35,6 @@
 						
 						<h3 style="">Balisage 2020</h3>
 						
-						<!--<img src="img/GG-Drainage-image-PVC-pipes-background.jpg" alt="Stacked pipes" width="400"/>-->
-						
 						<p style="font-size: smaller;">Ari Nordström | ari.nordstrom@gmail.com</p>
 						
 						<aside class="notes">
@@ -249,6 +247,23 @@ total 106M
 								<li>Output named after step</li>
 								<li>Note the size of debug files</li>
 							</ul>
+						</aside>
+					</section>
+					
+					<!-- One *conceptual* thing: lists, inline, graphics, main structures... -->
+					<!-- Refactor often! -->
+					<section>
+						<p style="text-align: left;">One conceptual thing:</p>
+						<ul>
+							<li>Unordered lists</li>
+							<li>Inline</li>
+							<li>References</li>
+							<li>...</li>
+						</ul>
+						<p class="fragment">Refactor often!</p>
+						
+						<aside class="notes">
+							<p>Refactor often!</p>
 						</aside>
 					</section>
 					
@@ -521,119 +536,6 @@ total 106M
 						</aside>
 					</section>
 					
-					<!-- Use? Maybe not. -->
-					<!--<section>
-						<pre style="font-size: 0.45em;">
-							<code class="xml" data-trim data-noescape>&lt;p:choose name="run">
-    &lt;p:when test="$run-xspecs='true'">
-        
-        &lt;!-\- Generate instance XSpecs -\->
-        &lt;p:xslt name="generate-xspec-instances">
-            &lt;p:input port="source">
-                &lt;p:inline>
-                    &lt;empty/>
-                &lt;/p:inline>
-            &lt;/p:input>
-            &lt;p:input port="stylesheet">
-                &lt;p:pipe port="xspec2instance" step="run-xspecs"/>
-            &lt;/p:input>
-            &lt;p:with-param name="tmp-folder" select="$tmp-folder-uri"/>
-            &lt;p:with-param name="xspec-manifest-uri" select="$xspec-manifest-uri"/>
-        &lt;/p:xslt>
-        
-        &lt;!-\- Nothing interesting on the primary port so throw it away -\->
-        &lt;p:sink/>
-        
-        &lt;!-\- Generate XSLTs from the instance XSpecs available on the secondary port -\->
-        &lt;p:for-each name="generate-xslt-tests">
-            
-            &lt;p:iteration-source>
-                &lt;p:pipe port="secondary" step="generate-xspec-instances"/>
-            &lt;/p:iteration-source>
-            
-            &lt;p:output port="result" sequence="true">
-                &lt;p:empty/>
-            &lt;/p:output>
-            
-            &lt;!-\- The current instance XSpec's URI from the XSLT secondary (result-document) port -\->
-            &lt;p:variable name="current-path" select="p:base-uri()"/>
-            
-            &lt;p:identity name="iteration-source"/>
-            
-            &lt;cx:message>
-                &lt;p:with-option
-                    name="message"
-                    select="if ($run-xspecs='true')
-                    then (concat('Running XSpec tests in ',$current-path))
-                    else ()"/>
-            &lt;/cx:message>
-            
-            &lt;!-\- Save the instance XSpecs for debug purposes -\->
-            &lt;p:store method="xml">
-                &lt;p:with-option name="href" select="$current-path"/>
-            &lt;/p:store>
-            
-            &lt;!-\- Convert the current instance XSpec to XSLT -\->
-            &lt;p:xslt name="xspec2xsl">
-                &lt;p:input port="source">
-                    &lt;p:pipe port="result" step="iteration-source"/>
-                &lt;/p:input>
-                &lt;p:input port="stylesheet">
-                    &lt;p:pipe port="xspec2xsl" step="run-xspecs"/>
-                &lt;/p:input>
-                &lt;p:input port="parameters">
-                    &lt;p:pipe port="params" step="run-xspecs"/>
-                &lt;/p:input>
-            &lt;/p:xslt>
-            
-            &lt;!-\- Run the XSLT -\->
-            &lt;p:xslt name="runxspec-xslt">
-                &lt;p:input port="source">
-                    &lt;p:empty/>
-                &lt;/p:input>
-                &lt;p:input port="stylesheet">
-                    &lt;p:pipe port="result" step="xspec2xsl"/>
-                &lt;/p:input>
-                &lt;p:with-option name="template-name" select="'x:main'"/>
-                &lt;p:input port="parameters">
-                    &lt;p:pipe port="params" step="run-xspecs"/>
-                &lt;/p:input>
-            &lt;/p:xslt>
-            
-            &lt;!-\- Convert the XML reports to HTML -\->
-            &lt;p:xslt name="xspec-xml2html">
-                &lt;p:input port="source"/>
-                &lt;p:input port="stylesheet">
-                    &lt;p:pipe port="xspec-report2html" step="run-xspecs"/>
-                &lt;/p:input>
-                &lt;p:input port="parameters">
-                    &lt;p:pipe port="params" step="run-xspecs"/>
-                &lt;/p:input>
-            &lt;/p:xslt>
-            
-            &lt;!-\- Save the HTML -\->
-            &lt;p:store 
-                method="xml">
-                &lt;p:with-option name="href" select="replace($current-path,'\.xspec','-report.xhtml')"/>
-            &lt;/p:store>
-            
-        &lt;/p:for-each>
-        
-        &lt;p:sink/>
-        
-    &lt;/p:when>
-    
-    &lt;p:otherwise>
-        &lt;p:sink>
-            &lt;p:input port="source">
-                &lt;p:empty/>
-            &lt;/p:input>
-        &lt;/p:sink>
-    &lt;/p:otherwise>
-&lt;/p:choose></code>
-						</pre>
-					</section>-->
-					
 				</section>
 				
 				<!-- END of Testing -->
@@ -677,11 +579,10 @@ total 106M
     select="xs:dateTime('2020-01-08T00:00:00')"/>
 &lt;/x:scenario></code>
 						</pre>
-					</section>
-					
-					<section>
-						<!-- Why not combine XSLT and XSpec manifests into a single manifest format? -->
-						<p>Worth exploring: Generate documentation from the manifest(s) and tests</p>
+						
+						<aside class="notes">
+							<p>Worth exploring: Generate documentation from the manifest(s) and tests</p>
+						</aside>
 					</section>
 					
 				</section>
@@ -712,6 +613,12 @@ total 106M
 							<li>Feed output to next XSLT in sequence</li>
 							<li>Rinse &amp; repeat until no XSLTs left</li>
 						</ol>
+						
+						<aside class="notes">
+							<p>You'll also need wrappers and things like the XSpec step</p>
+							<p>Lexis used Ant scripts </p>
+							<p><strong>This is what I've been using until recently</strong></p>
+						</aside>
 					</section>
 					
 					<section>
@@ -722,8 +629,11 @@ total 106M
 							<li>Manifest, steps the same in XProc and XQ</li>
 							<li>All dev in XProc</li>
 							<li>eXist-db for production only</li>
-							<!--<li>XSpec tests not supported in XQuery version</li>-->
 						</ul>
+						
+						<aside class="notes">
+							<p>XSpec tests not supported in XQ - no need</p>
+						</aside>
 					</section>
 					
 					<section>
