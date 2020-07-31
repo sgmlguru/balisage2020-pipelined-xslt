@@ -50,7 +50,7 @@
 						</span>
 						
 						<aside class="notes">
-							<p>Document management, publishing systems</p>
+							<p>Docum management, publishing</p>
 							<p>Document conversions. Batch.</p>
 							<p>Monolithic XSLT, sometimes 2-3 in sequence</p>
 							<p>Hard-coded XProc, other scripts</p>
@@ -67,7 +67,7 @@
 						
 						<aside class="notes">
 							<p>XSLTs in sequence</p>
-							<p>But what if you need to change the order or add to the pipeline?</p>
+							<p>What if you need to change the order or add to the pipeline?</p>
 						</aside>
 					</section>
 					
@@ -82,6 +82,7 @@
 						
 						<aside class="notes">
 							<p>Hard-coded XProcs quickly become problematic</p>
+							<p><strong>That changed for me a few years ago.</strong></p>
 						</aside>
 					</section>
 					
@@ -90,8 +91,11 @@
 							<img src="img/halsburys-laws-of-england.jpg" alt="Halsbury's Laws of England printed books, and laptop"/>
 						</span>
 						
+						<p>Nic Gibson's XProc Tools</p>
+						<p><a href="https://github.com/Corbas/xproc-tools">https://github.com/Corbas/xproc-tools</a></p>
+						
 						<aside class="notes">
-							<p>Lexis: RTF to XML (Nic Gibson and XProc Tools)</p>
+							<p>Lexis: pipelines, RTF to XML (Nic, XProc Tools)</p>
 							<p>Karnov: SFS XML merge</p>
 							<p>On-demand Excel to online XML feed</p>
 							<p>Complex conversions in batch</p>
@@ -112,10 +116,11 @@
 						
 						<aside class="notes">
 							<p>Lexis was a turning point</p>
+							<p><strong>The central thing is the manifest</strong></p>
 						</aside>
 					</section>
 					
-					<section>
+					<!--<section>
 						<p>Nic Gibson's XProc Tools</p>
 						<p><a href="https://github.com/Corbas/xproc-tools">https://github.com/Corbas/xproc-tools</a></p>
 						
@@ -125,14 +130,14 @@
 							<p>They list XSLT steps in a manifest</p>
 						</aside>
 						
-					</section>
+					</section>-->
 					
 					<section>
 						<!-- Manifest file -->
 						<p>Manifests</p>
 						
 						<pre class="stretch">
-                            <code class="xml" data-line-numbers="1-16|7|5,9-10|1-16" data-trim data-noescape>&lt;manifest xml:base=".">
+                            <code class="xml" data-line-numbers="1-16|7|5,9-10" data-trim data-noescape>&lt;manifest xml:base=".">
     
     &lt;group description="Just a demo" xml:base="../xslt/">
         &lt;item href="step1.xsl" description="To element one">
@@ -151,8 +156,8 @@
 						</pre>
 						
 						<aside class="notes">
-							<p>Each item is a step</p>
 							<p>Steps in document order</p>
+							<p><strong>Each item is a step</strong></p>
 							<p><strong>Note the meta elements injecting parameters</strong></p>
 							<p>Each step does one thing</p>
 						</aside>
@@ -218,7 +223,6 @@
 						<aside class="notes">
 							<p>Step 2, one more thing</p>
 							<p>Note the dependence on step 1</p>
-							<p>And I've left out the ID transform</p>
 						</aside>
 					</section>
 					
@@ -260,8 +264,6 @@ total 106M
 						</aside>
 					</section>
 					
-					<!-- One *conceptual* thing: lists, inline, graphics, main structures... -->
-					<!-- Refactor often! -->
 					<section>
 						<p style="text-align: left;">One conceptual thing:</p>
 						<ul>
@@ -273,6 +275,8 @@ total 106M
 						<p class="fragment">Refactor often!</p>
 						
 						<aside class="notes">
+							<p>One concept or topic per step</p>
+							<p>Many steps happen</p>
 							<p>Refactor often!</p>
 						</aside>
 					</section>
@@ -308,8 +312,8 @@ total 106M
 						</aside>
 					</section>
 					
-					<section>
-						<!-- Breadcrumb attrs -->
+					<!--<section>
+						<!-\- Breadcrumb attrs -\->
 						<p style="text-align: left;">Breadcrumbs</p>
 						<pre>
                             <code class="xml" data-trim data-noescape>&lt;xsl:attribute name="src-styling">
@@ -326,10 +330,11 @@ total 106M
 							<p>Copy attributes in sources</p>
 							<p>Extremely useful when debugging large conversions</p>
 						</aside>
-					</section>
+					</section>-->
 					
 					<section>
 						<!-- Breadcrumb attrs -->
+						<p style="text-align: left;">Breadcrumbs<br/></p>
 						<p style="text-align: left;">For this...</p>
 						<pre>
                             <code class="xml" data-trim data-noescape>&lt;para style="1" frame="dash">Test&lt;/para></code>
@@ -342,12 +347,27 @@ total 106M
 						
 						<aside class="notes">
 							<p>Breadcrumb attrs with pseudo attrs from sources</p>
-							<p>I've kept these in thousands of docs the first few months</p>
 							<p>Useful when understanding where something came from</p>
+							<p>They help you debig, add steps</p>
+							<p>I've kept these in thousands of docs the first few months</p>
 						</aside>
 					</section>
 					
 					<!-- Convenience discussion -->
+					
+					<section>
+						<p style="text-align: left;">"Sequential convenience"</p>
+						<ul>
+							<li>Temp markup and mockery</li>
+							<li>Temp lookups in step outputs</li>
+							<li>...</li>
+						</ul>
+						
+						<aside class="notes">
+							<p>You can do a lot of convenience-based transform...</p>
+							<p><strong>But I really want to stress *focus*</strong></p>
+						</aside>
+					</section>
 					
 					<section>
 						<!-- Pipeline organisation and grouping -->
@@ -380,20 +400,6 @@ total 106M
 						</aside>
 					</section>
 					
-					<section>
-						<p style="text-align: left;">"Sequential convenience"</p>
-						<ul>
-							<li>Temp markup and mockery</li>
-							<li>Temp lookups in step outputs</li>
-							<li>...</li>
-						</ul>
-						
-						<aside class="notes">
-							<p>You can do a lot of convenience-based transform...</p>
-							<p><strong>But I really want to stress *focus*</strong></p>
-						</aside>
-					</section>
-					
 					<!-- Each step does one thing -->
 					<section>
 						<img src="img/lens_1540441276.jpg" alt="Lens focussing on one thing" width="500"/>
@@ -423,8 +429,8 @@ total 106M
 					<section>
 						<p>Validation</p>
 						<ul>
-							<li>Schematron</li>
 							<li>DTDs (for now)</li>
+							<li>Schematron</li>
 						</ul>
 						
 						<aside class="notes">
